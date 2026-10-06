@@ -206,21 +206,7 @@ The image shows the remaining route from the first completed command. This is a 
 | `test/test_replanning.py` | Replanning tests |
 | `images/` | Saved results displayed in this README |
 
-## 10. Installation
-
-Use Python 3. The documentation examples and existing tests were checked with Python 3.12, NetworkX 3.7, Matplotlib 3.10.8, and pytest 9.1.1.
-
-Clone the repository and enter its root directory. Access to this repository is required while it is private.
-
-```bash
-git clone https://github.com/imwwhywhy/GPSR_pathplanning.git
-cd GPSR_pathplanning
-python -m pip install networkx matplotlib pytest
-```
-
-A virtual environment is recommended if you work on multiple Python projects. On systems where Python 3 is named `python3`, use `python3` in place of `python`.
-
-## 11. How to Run
+## 10. How to Run
 
 Run all commands from the repository root.
 
@@ -265,39 +251,3 @@ python -m pytest -v
 ```
 
 The existing suite passed **14 tests** during README preparation. The default baseline demo, all three advanced demos, and the benchmark also completed successfully.
-
-## 12. Current Progress and Limitations
-
-Implemented:
-
-- A* point-to-point path planning.
-- Exhaustive multi-command ordering with cached pairwise paths.
-- Multiple map sizes and seeded random obstacles.
-- Experimental obstacle-clearance penalties.
-- Corridor compression with path reconstruction.
-- Replanning after a simulated new obstacle.
-- Automated tests, route plots, and benchmarking.
-
-Current limitations:
-
-- Exhaustive ordering scales factorially with command count.
-- Clearance is a grid-node metric; robot footprint and motion constraints are not modeled.
-- Minimum-clearance improvements have not been demonstrated on these three scenarios.
-- Reported timings exclude preprocessing and do not measure complete robot-navigation latency.
-- The prototype has no live perception, controller, ROS 2 / Nav2, or BARN integration.
-
-## 13. Future Work
-
-A possible integration pipeline is:
-
-**Occupancy grid / costmap → graph representation → A* pairwise paths → command ordering → planned route → robot controller**
-
-Possible next steps include:
-
-- ROS 2 / Nav2 and BARN simulation integration.
-- Better clearance costs and robot-footprint handling.
-- More efficient optimization for larger command sets.
-- Dynamic costmap updates.
-- Motion and controller integration.
-
-The current deliverable is a reproducible Python implementation showing what was planned, which command order was selected, and how the experimental extensions affect the results.
